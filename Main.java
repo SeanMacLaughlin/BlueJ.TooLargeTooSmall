@@ -1,33 +1,49 @@
 
 /**
  * Write a description of class Main here.
- *
- * @author (your name)
- * @version (a version number or a date)
+ * @author (Sean MacLaughlin)
+ * @version (2.5.19)
  */
-public class Main
-{
-    // instance variables - replace the example below with your own
-    private int x;
+import java.util.Scanner;
+import java.util.Random;
+public class Main {
 
-    /**
-     * Constructor for objects of class Main
-     */
-    public Main()
-    {
-        // initialise instance variables
-        x = 0;
-    }
+    public static void main(String[] args ) {
+        
+        System.out.println("Pick a number 1-50");  
+      
+        Random rando = new Random();
+        int number = rando.nextInt(50) -1; //Set range for random number
+        int tries = 0; //Counter
+        Scanner input = new Scanner(System.in);
+        int userIn;
+        int guessed;
+        boolean win = false; 
+        
+        while(win == false) {
+            System.out.println("Pick a number between 1 and 50");
+            userIn = input.nextInt();
+            guessed = userIn;
+            tries++;
+          
 
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+        if(userIn == number) {
+            win = true;
+            tries++;
+            System.out.println("Right you are!");
+            System.out.println("It only took you " + tries + " guesses!");
+        } else if(userIn < number && userIn != guessed) {
+            tries++;
+            System.out.println("Too small");
+        } else if(userIn > number && userIn != guessed) {
+            tries++;
+            System.out.println("Too large");
+        } else if (userIn < number) {
+            System.out.println("Too small");
+        } else if (userIn > number) {
+            System.out.println("Too large");
+        }
+        
     }
+ }
 }
